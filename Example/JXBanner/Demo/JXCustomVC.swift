@@ -148,7 +148,7 @@ extension JXCustomVC: JXBannerDataSource {
                     .itemSize(CGSize(width: 300, height: 150))
                     .itemSpacing(10)
                     .rateOfChange(0.8)
-                    .minimumScale(0.7)
+                    .minimumScale(1)
                     .rateHorisonMargin(0.5)
                     .minimumAlpha(0.8)
             }else if banner.indentify == "converflowBanner" {
@@ -176,8 +176,8 @@ extension JXCustomVC: JXBannerDataSource {
         if banner.indentify == "linearBanner" {
             let pageControl = JXPageControlScale()
             pageControl.contentMode = .bottom
-            pageControl.activeSize = CGSize(width: 15, height: 6)
-            pageControl.inactiveSize = CGSize(width: 6, height: 6)
+            pageControl.activeSize = CGSize(width: 10, height: 3)
+            pageControl.inactiveSize = CGSize(width: 10, height: 3)
             pageControl.activeColor = UIColor.red
             pageControl.inactiveColor = UIColor.lightGray
             pageControl.columnSpacing = 0

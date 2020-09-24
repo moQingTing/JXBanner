@@ -23,6 +23,8 @@ import UIKit
     /// IsAnimation only applies "set currentPage",
     /// while "set progress" does not work
     @IBInspectable public var isAnimation: Bool = true
+    
+    @IBInspectable public var isRoundedCorners: Bool = false
 
     private var inactiveOriginFrame: [CGRect] = []
     
@@ -104,19 +106,18 @@ import UIKit
                                       width: rightWidth,
                                       height: rightHeight)
 
-
-            if leftWidth > leftHeight {
-                leftLayer.cornerRadius = leftHeight*0.5
-            }else {
-                leftLayer.cornerRadius = leftWidth*0.5
+            if isRoundedCorners{
+                if leftWidth > leftHeight {
+                    leftLayer.cornerRadius = leftHeight*0.5
+                }else {
+                    leftLayer.cornerRadius = leftWidth*0.5
+                }
+                if rightWidth > rightHeight {
+                    rightLayer.cornerRadius = rightHeight*0.5
+                }else {
+                    rightLayer.cornerRadius = rightWidth*0.5
+                }
             }
-            if rightWidth > rightHeight {
-                rightLayer.cornerRadius = rightHeight*0.5
-            }else {
-                rightLayer.cornerRadius = rightWidth*0.5
-            }
-
-
 
             for index in 0 ..< numberOfPages {
                 if index != leftIndex,
@@ -238,11 +239,13 @@ extension JXPageControlScale {
             }
         }
         
-        /// Set cornerRadius
-        if layer.frame.width > layer.frame.height {
-            layer.cornerRadius = layer.frame.height*0.5
-        }else {
-            layer.cornerRadius = layer.frame.width*0.5
+        // Set cornerRadius
+        if isRoundedCorners{
+            if layer.frame.width > layer.frame.height {
+                layer.cornerRadius = layer.frame.height*0.5
+            }else {
+                layer.cornerRadius = layer.frame.width*0.5
+            }
         }
     }
     
